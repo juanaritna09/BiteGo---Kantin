@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth motion-reduce:scroll-auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BiteGo Penjual — Kelola Kantin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { o: '#FF7A00', od: '#E56A00', cream: '#FFF1E0', peach: '#FFE3C7', ink: '#201A14', muted: '#7C7066', line: '#F1E5D8', side: '#2B2724' },
+    fontFamily: { sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] },
+    boxShadow: { sh: '0 4px 18px rgba(120,70,10,.09)' },
+  } },
+};
+</script>
+</head>
+<body class="bg-[#FFFCF8] font-sans text-ink [&_:focus-visible]:outline [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-ink">
+<div id="root"></div>
+<div id="toast" role="status" class="pointer-events-none fixed bottom-24 left-1/2 z-50 max-w-[90vw] -translate-x-1/2 translate-y-5 rounded-xl bg-ink px-5 py-3 text-white opacity-0 transition motion-reduce:transition-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100 md:bottom-8"></div>
+<script src="appadmin.js"></script>
+</body>
+</html>

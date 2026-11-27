@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth motion-reduce:scroll-auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BiteGo — Pesan Mudah, Makan Lebih Cepat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { o: '#FF7A00', od: '#E56A00', cream: '#FFF1E0', peach: '#FFE3C7', ink: '#201A14', muted: '#7C7066', line: '#F1E5D8' },
+    fontFamily: { sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'] },
+    boxShadow: { sh: '0 4px 18px rgba(120,70,10,.09)' },
+  } },
+};
+</script>
+</head>
+<body class="bg-[#FFFCF8] font-sans leading-normal text-ink pb-[env(safe-area-inset-bottom)] [&_:focus-visible]:outline [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-ink">
+
+<header class="sticky top-0 z-20 bg-white pt-[env(safe-area-inset-top)] shadow-[0_1px_0_#F1E5D8]">
+  <div class="mx-auto flex h-16 max-w-[1160px] items-center justify-between gap-3 px-4 md:justify-start md:gap-7 md:px-5">
+    <a href="#/" class="flex items-center gap-2 text-[1.55rem] font-extrabold tracking-tight text-o" aria-label="BiteGo beranda">
+      <i class="grid h-9 w-9 place-items-center rounded-[11px] bg-o text-xl not-italic">👨‍🍳</i>BiteGo
+    </a>
+    <nav class="hidden flex-1 gap-6 font-semibold md:flex" aria-label="Utama">
+      <a href="#/" data-nav="home" class="border-b-[3px] border-transparent py-5 data-[on=true]:border-o data-[on=true]:text-o">Beranda</a>
+      <a href="#/jelajahi" data-nav="jelajahi" class="border-b-[3px] border-transparent py-5 data-[on=true]:border-o data-[on=true]:text-o">Jelajahi Kantin</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#/keranjang" class="relative p-1.5 text-2xl leading-none" aria-label="Keranjang">🛒<span id="badge" class="absolute -right-1.5 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-red-600 px-1 text-[.72rem] font-bold text-white empty:hidden"></span></a>
+      <button id="cekStatus" class="hidden items-center justify-center gap-2 rounded-xl bg-white px-[18px] py-2.5 font-bold text-o ring-[1.5px] ring-inset ring-o transition hover:bg-cream md:inline-flex">🔍 Cek Status Pesanan</button>
+      <button id="loginPenjual" class="hidden items-center justify-center gap-2 rounded-xl bg-o px-[18px] py-2.5 font-bold text-white transition hover:bg-od active:scale-95 md:inline-flex">🏪 Login Penjual</button>
+    </div>
+  </div>
+</header>
+
+<main id="app" aria-live="polite"></main>
+
+<footer class="mt-12 bg-[#2E2A27] pb-24 pt-7 text-[#E9E2DA] md:pb-7">
+  <div class="mx-auto flex max-w-[1160px] flex-wrap items-center justify-between gap-8 px-4 md:px-5">
+    <div class="flex items-center gap-2 text-xl font-extrabold text-white">
+      <i class="grid h-9 w-9 place-items-center rounded-[11px] bg-o not-italic">👨‍🍳</i>
+      <span>BiteGo<small class="block text-xs font-normal text-[#B5AAA0]">Pesan Mudah, Makan Lebih Cepat!</small></span>
+    </div>
+    <nav class="flex flex-wrap gap-5"><a href="#/">Tentang Kami</a><a href="#/">Bantuan</a><a href="#/">Kontak</a></nav>
+    <small class="text-[#B5AAA0]">© 2025 BiteGo. Semua hak dilindungi.</small>
+  </div>
+</footer>
+
+<nav class="fixed inset-x-0 bottom-0 z-30 flex bg-white px-2 pt-1.5 pb-[calc(6px+env(safe-area-inset-bottom))] shadow-[0_-2px_14px_rgba(0,0,0,.08)] md:hidden" aria-label="Navigasi bawah">
+  <a href="#/" data-nav="home" class="flex flex-1 flex-col items-center p-1 text-[.72rem] font-semibold text-muted data-[on=true]:text-o"><span class="text-2xl leading-tight">🏠</span>Beranda</a>
+  <a href="#/jelajahi" data-nav="jelajahi" class="flex flex-1 flex-col items-center p-1 text-[.72rem] font-semibold text-muted data-[on=true]:text-o"><span class="text-2xl leading-tight">🔍</span>Jelajahi</a>
+  <a href="#/keranjang" data-nav="keranjang" class="relative flex flex-1 flex-col items-center p-1 text-[.72rem] font-semibold text-muted data-[on=true]:text-o"><span class="text-2xl leading-tight">🛒</span>Keranjang<b id="badge2" class="absolute -top-0.5 right-[calc(50%-26px)] grid h-5 min-w-5 place-items-center rounded-full bg-red-600 px-1 text-[.72rem] text-white empty:hidden"></b></a>
+  <a href="#" id="profil" class="flex flex-1 flex-col items-center p-1 text-[.72rem] font-semibold text-muted"><span class="text-2xl leading-tight">👤</span>Pesanan</a>
+</nav>
+
+<div id="toast" role="status" class="pointer-events-none fixed bottom-24 left-1/2 z-50 max-w-[90vw] -translate-x-1/2 translate-y-5 rounded-xl bg-ink px-5 py-3 text-white opacity-0 transition motion-reduce:transition-none data-[show=true]:translate-y-0 data-[show=true]:opacity-100"></div>
+<script src="app.js"></script>
+</body>
+</html>
